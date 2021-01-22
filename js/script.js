@@ -1,4 +1,4 @@
-//DATA SECTION
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>DATA SECTION<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 const fieldCodes = [
   'W', 'U', 'B', 'R', 'G'
@@ -14,7 +14,7 @@ const cardTypes = [
 ];
 
 const optionsAvailable = [
-  'All',0 , 1, 2, 3, 4, 5
+  'All', 0, 1, 2, 3, 4, 5
 ];
 
 // Abbiamo creato un oggetto di oggetti, come riferimento
@@ -166,7 +166,7 @@ const cards = [
     story: 'Ha messo tutta la forza per contenere il fuoco',
 
     score: {
-      power: 5,
+      power: 3,
       toughness: 5
     }
 
@@ -174,7 +174,7 @@ const cards = [
 ];
 
 
-//LOGICAL SECTION
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>LOGICAL SECTION<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 //filtro array attraverso la proprietà power
 function filterByPower(powerValue, array){
@@ -188,6 +188,7 @@ function filterByPower(powerValue, array){
 //funzione per stampare una lista di elementi nel DOM
 function printListItemById(DOMElementId, array){
   let listItem = document.getElementById(DOMElementId);
+  listItem.innerHTML = '';
   array.forEach((element, index) => {
     listItem.innerHTML += `<li>${element.cardName}</li>`
   });
@@ -197,7 +198,7 @@ function printListItemById(DOMElementId, array){
 function printOptionsByClass(className, classIndex, arrayOption){
   const options = document.getElementsByClassName(className)[classIndex];
   arrayOption.forEach((element, index) => {
-    options.innerHTML += `<option value="element">${element}</option>`
+    options.innerHTML += `<option value="${element}">${element}</option>`
   });
 };
 
@@ -205,10 +206,24 @@ function printOptionsByClass(className, classIndex, arrayOption){
 
 
 
-//OUTPUT SECTION
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>OUTPUT SECTION<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
 //stampa delle opzioni nel selettore
-printOptionsByClass("select-by-power", 0, optionsAvailable);
+printOptionsByClass('select-by-power', 0, optionsAvailable);
 
 
 //stampa dei nomi delle card
-printListItemById("card-list", cards);
+printListItemById('card-list', cards);
+
+//l'utente naviga le carte scegliendo in base al potere delle card
+const searchByPower = $('.select-by-power');
+searchByPower.change(function(){
+   let userSelection = $(this).val();
+  if (userSelection === 'All'){
+    printListItemById('card-list', cards);
+  }else{
+    userSelection = parseInt($(this).val());
+   const newArray = filterByPower(userSelection, cards);
+   printListItemById('card-list', newArray);
+  }
+})
