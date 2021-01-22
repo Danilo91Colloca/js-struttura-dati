@@ -1,3 +1,4 @@
+//DATA SECTION
 
 const fieldCodes = [
   'W', 'U', 'B', 'R', 'G'
@@ -81,7 +82,7 @@ const cards = [
     story: 'Lo sviluppatore guerriero è una forma di essere umano evoluto.',
 
     score: {
-      power: 5,  // r
+      power: 5,
       toughness: 3
     }
 
@@ -120,9 +121,7 @@ const cards = [
 
     cost: {
       genericCostNumber: 4,
-      costFields: [ // colors array con riferimento a fieldCodes
-        fieldCodes[]
-      ],
+      costFields: [],
     },
 
     picture: 'images/g.png',  // da inserire immagine
@@ -163,11 +162,39 @@ const cards = [
     story: 'Ha messo tutta la forza per contenere il fuoco',
 
     score: {
-      power: 6,
-      toughness: 6
+      power: 5,
+      toughness: 5
     }
 
   },
 ]
 
 console.log(cards);
+
+
+//LOGICAL SECTION
+
+//filtro array attraverso la proprietà power
+function filterByPower(powerValue, array){
+  const filterdArray = array.filter((element) =>{
+    return array.score.power === powerValue
+  });
+}
+
+
+
+
+
+//OUTPUT SECTION
+
+
+//per Visualizzare solo il nome carta in HTML
+const printCards = document.getElementById('card-list');
+cards.forEach((element) => {
+  printCards.innerHTML+=`
+    <li>${element.cardName}</li>
+  `
+});
+
+
+const userSearchByPower = $(".select-by-power");
