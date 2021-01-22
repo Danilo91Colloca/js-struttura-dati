@@ -184,6 +184,14 @@ function filterByPower(powerValue, array){
   return filteredArray;
 };
 
+//funzione che filtra attraverso la proprietà senza sottolivelli
+
+function filterByTypeValue(propertyValue, array){
+  const filteredArray = array.filter((element) => {
+    return element.cardType === propertyValue
+  })
+  return filteredArray
+}
 
 //funzione per stampare una lista di elementi nel DOM
 function printListItemById(DOMElementId, array){
@@ -201,7 +209,6 @@ function printOptionsByClass(className, classIndex, arrayOption){
     options.innerHTML += `<option value="${element}">${element}</option>`
   });
 };
-
 
 
 
