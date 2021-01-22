@@ -2,7 +2,7 @@
 
 const fieldCodes = [
   'W', 'U', 'B', 'R', 'G'
-]
+];
 
 const cardTypes = [
   'terre',
@@ -11,7 +11,11 @@ const cardTypes = [
   'artefatti',
   'instantanei',
   'stregonerie'
-]
+];
+
+const optionsAvailable = [
+  'All',0 , 1, 2, 3, 4, 5
+];
 
 // Abbiamo creato un oggetto di oggetti, come riferimento
 // di una edizione. Se ad esempio scrivo editions['SP']
@@ -167,19 +171,35 @@ const cards = [
     }
 
   },
-]
-
-console.log(cards);
+];
 
 
 //LOGICAL SECTION
 
 //filtro array attraverso la proprietà power
 function filterByPower(powerValue, array){
-  const filterdArray = array.filter((element) =>{
-    return array.score.power === powerValue
+  const filteredArray = array.filter((element) =>{
+    return element.score.power === powerValue
   });
-}
+  return filteredArray;
+};
+
+
+//funzione per stampare una lista di elementi nel DOM
+function printListItemById(DOMElementId, array){
+  let listItem = document.getElementById(DOMElementId);
+  array.forEach((element, index) => {
+    listItem.innerHTML += `<li>${element.cardName}</li>`
+  });
+};
+
+//funzione per stampare le option dell'utente
+function printOptionsByClass(className, classIndex, arrayOption){
+  const options = document.getElementsByClassName(className)[classIndex];
+  arrayOption.forEach((element, index) => {
+    options.innerHTML += `<option value="element">${element}</option>`
+  });
+};
 
 
 
@@ -187,14 +207,4 @@ function filterByPower(powerValue, array){
 
 //OUTPUT SECTION
 
-
-//per Visualizzare solo il nome carta in HTML
-const printCards = document.getElementById('card-list');
-cards.forEach((element) => {
-  printCards.innerHTML+=`
-    <li>${element.cardName}</li>
-  `
-});
-
-
-const userSearchByPower = $(".select-by-power");
+printOptionsByClass("select-by-power", 0, optionsAvailable);
