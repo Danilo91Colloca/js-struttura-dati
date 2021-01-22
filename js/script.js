@@ -206,5 +206,9 @@ function printOptionsByClass(className, classIndex, arrayOption){
 
 
 //OUTPUT SECTION
-
+//stampa delle opzioni nel selettore
 printOptionsByClass("select-by-power", 0, optionsAvailable);
+
+
+//stampa dei nomi delle card
+printListItemById("card-list", cards);
