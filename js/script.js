@@ -5,6 +5,7 @@ const fieldCodes = [
 ];
 
 const cardTypes = [
+  'All',
   'terre',
   'creature',
   'incantesimi',
@@ -218,11 +219,10 @@ function printOptionsByClass(className, classIndex, arrayOption){
 //stampa delle opzioni nel selettore
 printOptionsByClass('select-by-power', 0, optionsAvailable);
 
-
 //stampa dei nomi delle card
 printListItemById('card-list', cards);
 
-//l'utente naviga le carte scegliendo in base al potere delle card
+//l'utente sceglie le carte da visualizare in base al poter
 const searchByPower = $('.select-by-power');
 searchByPower.change(function(){
    let userSelection = $(this).val();
@@ -233,7 +233,24 @@ searchByPower.change(function(){
    const newArray = filterByPower(userSelection, cards);
    printListItemById('card-list', newArray);
   }
-})
+});
 
 //stampa le opzioni di ricerca per tipo
 printOptionsByClass('select-by-type', 0, cardTypes);
+
+//stampa dei nomi delle card
+printListItemById('card-list-type', cards);
+
+//l'utente sceglie le carte da visualizare in base al tipo
+const searchByType = $('.select-by-type');
+searchByType.change(function(){
+  let userSelection = $(this).val();
+  if (userSelection === 'All'){
+    printListItemById('card-list-type', cards);
+  }else{
+    userSelection = $(this).val();
+   const newArray = filterByTypeValue(userSelection, cards);
+   printListItemById('card-list-type', newArray);
+  }
+
+});
