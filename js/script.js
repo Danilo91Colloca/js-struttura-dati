@@ -5,7 +5,7 @@ const fieldCodes = [
 ];
 
 const cardTypes = [
-  'All',
+  'All types',
   'terre',
   'creature',
   'incantesimi',
@@ -15,7 +15,7 @@ const cardTypes = [
 ];
 
 const optionsAvailable = [
-  'All', 0, 1, 2, 3, 4, 5
+  'All power', 0, 1, 2, 3, 4, 5
 ];
 
 // Abbiamo creato un oggetto di oggetti, come riferimento
@@ -226,7 +226,7 @@ printListItemById('card-list', cards);
 const searchByPower = $('.select-by-power');
 searchByPower.change(function(){
    let userSelection = $(this).val();
-  if (userSelection === 'All'){
+  if (userSelection === 'All power'){
     printListItemById('card-list', cards);
   }else{
     userSelection = parseInt($(this).val());
@@ -245,7 +245,7 @@ printListItemById('card-list-type', cards);
 const searchByType = $('.select-by-type');
 searchByType.change(function(){
   let userSelection = $(this).val();
-  if (userSelection === 'All'){
+  if (userSelection === 'All types'){
     printListItemById('card-list-type', cards);
   }else{
     userSelection = $(this).val();
