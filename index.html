@@ -6,21 +6,45 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
-
+    <!-- to search by power -->
     <div class="search-by-power">
-      <label class="label-search" for="power">CARD BY POWER</label>
+      <label class="label-search" for="power"></label>
+      <div class="search-title">
+        <span>SEARCH CARD BY POWER</span>
+      </div>
       <select class="select-by-power" name="power">
         <!-- <option value=""> from js</option> -->
       </select>
     </div>
+    <!-- end to search by power -->
 
+    <!-- list printed by Power -->
     <div class="card-container">
       <ul id="card-list">
         <!-- <li/> from js -->
       </ul>
 
     </div>
+    <!-- end list printed by Power -->
+    <!-- search by type -->
+    <div class="search-by-type">
+      <label class="label-search-type" for="typer"></label>
+      <div class="type-search-title">
+        <span>SEARCH CARD BY TYPE</span>
+      </div>
+      <select class="select-by-type" name="type">
+        <!-- <option value=""> from js</option> -->
+      </select>
+    </div>
+    <!-- end search by type -->
+    <!-- list printed by type -->
+    <div class="card-container">
+      <ul id="card-list">
+        <!-- <li/> from js -->
+      </ul>
 
+    </div>
+    <!-- end list printed by type -->
     <script src="js/script.js" charset="utf-8"></script>
   </body>
 </html>

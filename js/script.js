@@ -234,3 +234,6 @@ searchByPower.change(function(){
    printListItemById('card-list', newArray);
   }
 })
+
+//stampa le opzioni di ricerca per tipo
+printOptionsByClass('select-by-type', 0, cardTypes);
